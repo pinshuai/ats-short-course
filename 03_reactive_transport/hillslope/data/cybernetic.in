@@ -1,0 +1,101 @@
+# This input deck is modified from the cybernetic sandbox network
+# The immobile species is removed because ATS could not handel immobile species transport
+#=======================chemistry========================
+CHEMISTRY
+  PRIMARY_SPECIES
+    C5H7O2N(aq) 
+    CH2O(aq) 
+    CO2(aq) 
+    N2(aq) 
+    NH4+ 
+    NO2- 
+    NO3- 
+    O2(aq) 
+    # Tracer_river 
+  /
+  # IMMOBILE_SPECIES
+  #   C_consumption ! used for tracking the amount of organic carbon that is converted to inorganic carbon (DOC --> DIC)
+  # /
+  REACTION_SANDBOX
+    CYBERNETIC
+      ACTIVATION_ENERGY 62.715 kJ/mol 
+      F1 0.65 
+      F2 0.99 
+      F3 0.2167 
+      K1 25.97 1/d 
+      Ka1 0.001 mM 
+      Kd1 0.25 mM 
+      K2 21.39 1/d 
+      Ka2 0.004 mM 
+      Kd2 0.25 mM 
+      K3 77.91 1/d 
+      Ka3 0.001 mM 
+      Kd3 0.25 mM 
+      Kdeg 0.242 1/d 
+      # STORE_CONSUMPTION_PRODUCTION
+      # CARBON_CONSUMPTION_SPECIES C_consumption 
+    /
+  /
+  DATABASE ./cybernetic.dat 
+  LOG_FORMULATION
+  ACTIVITY_COEFFICIENTS OFF
+  TRUNCATE_CONCENTRATION 1.d-40
+  OUTPUT
+    ALL ! all species
+    TOTAL ! only total component conc.
+    FREE_ION
+    # auxiliary ! specific to this sandbox (for storing rate and cumulative mass)
+  /
+END
+#==================constraints=========================
+  CONSTRAINT initial
+    CONCENTRATIONS
+      C5H7O2N(aq) 1e-05 T 
+      CH2O(aq) 4.16e-05 T 
+      CO2(aq) 0.00248 T 
+      N2(aq) 1e-10 T 
+      NH4+ 1e-10 T 
+      NO2- 1e-10 T 
+      NO3- 0.000396 T 
+      O2(aq) 0.000266 T 
+      # Tracer_river 1e-20 T 
+    /
+    # IMMOBILE
+    #    C_consumption 1e-20 
+    # /
+  /
+
+  CONSTRAINT inland
+    CONCENTRATIONS
+      C5H7O2N(aq) 1e-05 T 
+      CH2O(aq) 4.16e-05 T 
+      CO2(aq) 0.00248 T 
+      N2(aq) 1e-10 T 
+      NH4+ 1e-10 T 
+      NO2- 1e-10 T 
+      NO3- 0.000396 T 
+      O2(aq) 0.000266 T 
+      # Tracer_river 1e-20 T 
+    /
+    # IMMOBILE
+    #    C_consumption 1e-20 
+    # /
+  /
+
+  CONSTRAINT rain
+    CONCENTRATIONS
+      C5H7O2N(aq) 1e-05 T 
+      CH2O(aq) 0.000258 T 
+      CO2(aq) 0.00112 T 
+      N2(aq) 1e-10 T 
+      NH4+ 1e-10 T 
+      NO2- 1e-10 T 
+      NO3- 8.87e-06 T 
+      O2(aq) 0.000359 T 
+      # Tracer_river 1 T 
+    /
+    # IMMOBILE
+    #    C_consumption 1e-20 
+    # /
+  /
+

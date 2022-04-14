@@ -1,0 +1,58 @@
+#=========================== chemistry ========================================
+CHEMISTRY
+  PRIMARY_SPECIES
+    A(aq)
+    B(aq)
+    C(aq)
+  /
+  MICROBIAL_REACTION
+    # CONCENTRATION_UNITS ACTIVITY
+    REACTION A(aq) + 2 B(aq) <-> 1.5 C(aq)
+    RATE_CONSTANT 1.d-12
+    MONOD
+      SPECIES_NAME A(aq)     ! A is the donor
+      HALF_SATURATION_CONSTANT 1.d-5
+    /
+    MONOD
+      SPECIES_NAME B(aq)     ! B is the acceptor
+      HALF_SATURATION_CONSTANT 1.d-4
+    /
+    INHIBITION
+      SPECIES_NAME C(aq)
+      TYPE MONOD
+      INHIBITION_CONSTANT 6.d-4   ! C is the product and inhibits when too high
+    /
+  /
+  DATABASE ./hanford.dat
+#  LOG_FORMULATION
+  ACTIVITY_COEFFICIENTS OFF
+  OUTPUT
+    ALL
+    TOTAL
+  /
+END
+
+#=========================== constraints ======================================
+CONSTRAINT initial
+  CONCENTRATIONS
+    A(aq) 1.d-7  T
+    B(aq) 1.d-7  T
+    C(aq) 1.d-7  T
+  /
+END
+
+CONSTRAINT rain
+  CONCENTRATIONS
+    A(aq) 1.d-4  T
+    B(aq) 1.d-3  T
+    C(aq) 1.d-7  T
+  /
+END
+
+CONSTRAINT inlet
+  CONCENTRATIONS
+    A(aq) 1.d-4  T
+    B(aq) 1.d-3  T
+    C(aq) 1.d-7  T
+  /
+END

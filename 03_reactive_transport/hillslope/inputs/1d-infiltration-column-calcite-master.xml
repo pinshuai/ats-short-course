@@ -10,114 +10,56 @@
     </ParameterList>
 
     <ParameterList name="domain" type="ParameterList">
-      <Parameter name="mesh type" type="string" value="read mesh file" />
+      <Parameter name="mesh type" type="string" value="generate mesh" />
       <Parameter name="build columns from set" type="string" value="surface" />
-      <ParameterList name="read mesh file parameters" type="ParameterList">
-        <Parameter name="file" type="string" value="../mesh/hillslope_10.exo" />
-        <Parameter name="format" type="string" value="Exodus II" />
+      <ParameterList name="generate mesh parameters" type="ParameterList">
+        <Parameter name="number of cells" type="Array(int)" value="{1,1,100}" />
+        <Parameter name="domain low coordinate" type="Array(double)" value="{0.0,0.0,0.0}" />
+        <Parameter name="domain high coordinate" type="Array(double)" value="{1.0,1.0,10.0}" />
       </ParameterList>
     </ParameterList>
 
   </ParameterList>
 
   <ParameterList name="regions" type="ParameterList">
-    <ParameterList name="computational domain">
-      <ParameterList name="region: all">
-      </ParameterList>
-    </ParameterList>
-    <ParameterList name="surface domain">
-      <ParameterList name="region: all">
-      </ParameterList>
-    </ParameterList>
-
-    <ParameterList name="toplayers" type="ParameterList">
-      <ParameterList name="region: labeled set" type="ParameterList">
-        <Parameter name="label" type="string" value="1001" />
-        <Parameter name="file" type="string" value="../mesh/hillslope_10.exo" />
-        <Parameter name="format" type="string" value="Exodus II" />
-        <Parameter name="entity" type="string" value="Cell" />
-      </ParameterList>
-    </ParameterList>
-    <ParameterList name="midlayers" type="ParameterList">
-      <ParameterList name="region: labeled set" type="ParameterList">
-        <Parameter name="label" type="string" value="1002" />
-        <Parameter name="file" type="string" value="../mesh/hillslope_10.exo" />
-        <Parameter name="format" type="string" value="Exodus II" />
-        <Parameter name="entity" type="string" value="Cell" />
-      </ParameterList>
-    </ParameterList>
-    <ParameterList name="bottomlayers" type="ParameterList">
-      <ParameterList name="region: labeled set" type="ParameterList">
-        <Parameter name="label" type="string" value="101" />
-        <Parameter name="file" type="string" value="../mesh/hillslope_10.exo" />
-        <Parameter name="format" type="string" value="Exodus II" />
-        <Parameter name="entity" type="string" value="Cell" />
-      </ParameterList>
-    </ParameterList>
-
-    <ParameterList name="bottom face">
-      <ParameterList name="region: labeled set">
-        <Parameter name="entity" type="string" value="face" />
-        <Parameter isUsed="true" name="file" type="string" value="../mesh/hillslope_10.exo" />
-        <Parameter name="format" type="string" value="Exodus II" />
-        <Parameter name="label" type="string" value="1" />
-      </ParameterList>
-    </ParameterList>
-    <ParameterList name="surface">
-      <ParameterList name="region: labeled set">
-        <Parameter name="entity" type="string" value="face" />
-        <Parameter isUsed="true" name="file" type="string" value="../mesh/hillslope_10.exo" />
-        <Parameter name="format" type="string" value="Exodus II" />
-        <Parameter name="label" type="string" value="2" />
-      </ParameterList>
-    </ParameterList>
-
-    <ParameterList name="east face" type="ParameterList">
-      <ParameterList name="region: plane" type="ParameterList">
-        <Parameter name="point" type="Array(double)" value="{1000.00, 0.0}"/>
-        <Parameter name="normal" type="Array(double)" value="{1, 0}"/>
-      </ParameterList>
-    </ParameterList>
-
-    <ParameterList name="surface east" type="ParameterList">
+    <ParameterList name="computational domain" type="ParameterList">
       <ParameterList name="region: box" type="ParameterList">
-        <Parameter name="low coordinate" type="Array(double)" value="{1000.0,0.0}" />
-        <Parameter name="high coordinate" type="Array(double)" value="{1000.0,2.0}" />
+        <Parameter name="low coordinate" type="Array(double)" value="{0.0,0.0,0.0}" />
+        <Parameter name="high coordinate" type="Array(double)" value="{1.0,1.0,10.0}" />
       </ParameterList>
     </ParameterList>
-
-    <ParameterList name="west face" type="ParameterList">
-      <ParameterList name="region: plane" type="ParameterList">
-        <Parameter name="point" type="Array(double)" value="{0.0, 0.0}"/>
-        <Parameter name="normal" type="Array(double)" value="{-1, 0}"/>
-      </ParameterList>
-    </ParameterList>
-
-    <ParameterList name="east conc" type="ParameterList">
+    <ParameterList name="surface domain" type="ParameterList">
       <ParameterList name="region: box" type="ParameterList">
-        <Parameter name="low coordinate" type="Array(double)" value="{900,-1e20}" />
-        <Parameter name="high coordinate" type="Array(double)" value="{1000,1e20}" />
-<!--
-        <Parameter name="low coordinate" type="Array(double)" value="{995,0.0,-1.0}" />
-        <Parameter name="high coordinate" type="Array(double)" value="{1000,1.0,0.0}" />
--->
+        <Parameter name="low coordinate" type="Array(double)" value="{0.0,0.0}" />
+        <Parameter name="high coordinate" type="Array(double)" value="{1.0,1.0}" />
       </ParameterList>
     </ParameterList>
-
-    <ParameterList name="surface boundary" type="ParameterList">
-      <ParameterList name="region: boundary" type="ParameterList">
+    <ParameterList name="bottom face" type="ParameterList">
+      <ParameterList name="region: plane" type="ParameterList">
+        <Parameter name="point" type="Array(double)" value="{0.5,0.5,0.0}" />
+        <Parameter name="normal" type="Array(double)" value="{0.0,0.0,-1.0}" />
       </ParameterList>
     </ParameterList>
-
+    <ParameterList name="surface" type="ParameterList">
+      <ParameterList name="region: plane" type="ParameterList">
+        <Parameter name="point" type="Array(double)" value="{0.5,0.5,10.0}" />
+        <Parameter name="normal" type="Array(double)" value="{0.0,0.0,1.0}" />
+      </ParameterList>
+    </ParameterList>
+    <ParameterList name="east face seepage" type="ParameterList">
+      <ParameterList name="region: box" type="ParameterList">
+        <Parameter name="low coordinate" type="Array(double)" value="{0.0,0.0,8.0}" />
+        <Parameter name="high coordinate" type="Array(double)" value="{1.0,0.0,8.1}" />
+      </ParameterList>
+    </ParameterList>
   </ParameterList>
 
 
 
   <ParameterList name="cycle driver">
     <Parameter name="start time" type="double" value="0.0" />
-    <Parameter name="end time" type="double" value="10.0" />
+    <Parameter name="end time" type="double" value="150.0" />
     <Parameter name="end time units" type="string" value="d" />
-    <Parameter name="end cycle" type="int" value="100" />
 <!--
     <Parameter name="restart from checkpoint file" type="string" value="./restart/checkpoint00051.h5" />	    
 -->
@@ -247,8 +189,7 @@
       <Parameter name="PK type" type="string" value="richards flow" />
       <Parameter name="darcy flux key" type="string" value="water_flux" />
       <Parameter name="primary variable key" type="string" value="pressure" />
-      <!-- <Parameter name="initial time step" type="double" value="86400.0" /> -->
-      <Parameter name="initial time step" type="double" value="10.0" />
+      <Parameter name="initial time step" type="double" value="86400.0" />
       <Parameter name="permeability rescaling" type="double" value="10000000.0" />
       <Parameter name="relative permeability method" type="string" value="upwind with Darcy flux" />
       <Parameter name="debug cells" type="Array(int)" value="{99}" />
@@ -257,8 +198,8 @@
       </ParameterList>
 
       <ParameterList name="initial condition" type="ParameterList">
-        <Parameter name="hydrostatic head [m]" type="double" value="-10.0" />
-        <Parameter name="hydrostatic water density [kg m^-3]" type="double" value="1000.0" />
+        <Parameter name="hydrostatic head [m]" type="double" value="-2.0" />
+        <Parameter name="hydrostatic water density [kg m^-3]" type="double" value="997.075" />
       </ParameterList>
 
       <ParameterList name="diffusion">
@@ -280,7 +221,7 @@
       <Parameter name="domain name" type="string" value="surface" />
       <Parameter name="source term" type="bool" value="true" />
       <Parameter name="water source in meters" type="bool" value="true" />
-      <Parameter name="initial time step" type="double" value="10.0" />
+      <Parameter name="initial time step" type="double" value="86400.0" />
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
       <ParameterList name="verbose object">
         <Parameter name="verbosity level" type="string" value="default" />
@@ -295,16 +236,6 @@
       </ParameterList>
 
       <ParameterList name="boundary conditions">
-        <ParameterList name="seepage face pressure" type="ParameterList">
-          <ParameterList name="surface boundary" type="ParameterList">
-            <Parameter name="regions" type="Array(string)" value="{surface boundary}" />
-            <ParameterList name="boundary pressure" type="ParameterList">
-              <ParameterList name="function-constant" type="ParameterList">
-                <Parameter name="value" type="double" value="101325" />
-              </ParameterList>
-            </ParameterList>
-          </ParameterList>
-        </ParameterList>
       </ParameterList>
 
       <ParameterList name="initial condition">
@@ -330,15 +261,15 @@
       <Parameter name="previous saturation liquid key" type="string" value="prev_saturation_liquid" />
       <Parameter name="flux_key" type="string" value="water_flux" />
       <Parameter name="molar_density_key" type="string" value="molar_density_liquid" />
-      <Parameter name="component names" type="Array(string)" value="{C5H7O2N(aq), CH2O(aq), CO2(aq), N2(aq), NH4+, NO2-, NO3-, O2(aq)}" />
-      <Parameter name="number of liquid components" type="int" value="8" />
-      <Parameter name="component molar masses" type="Array(double)" value="{30.0158, 30.0158, 44.0098, 28.0135, 18.0385, 46.0055, 62.0049, 31.9988}" />
+      <Parameter name="component names" type="Array(string)" value="{H+, HCO3-, Ca++, Tracer1}" />
+      <Parameter name="number of liquid components" type="int" value="4" />
+      <Parameter name="component molar masses" type="Array(double)" value="{1.0}" />
       <Parameter name="spatial discretization order" type="int" value="1" />
       <Parameter name="temporal discretization order" type="int" value="1" />
       <Parameter name="cfl" type="double" value="1.0" />
       <Parameter name="flow mode" type="string" value="transient" />
       <Parameter name="transport subcycling" type="bool" value="false" />
-      <Parameter name="number of aqueous components" type="int" value="8" />
+      <Parameter name="number of aqueous components" type="int" value="4" />
       <Parameter name="number of gaseous components" type="int" value="0" />
       <Parameter name="runtime diagnostics: regions" type="Array(string)" value="{}" />
       <Parameter name="debug cells" type="Array(int)" value="{99}" />
@@ -416,15 +347,15 @@
       <Parameter name="flux_key" type="string" value="surface-water_flux" />
       <Parameter name="molar_density_key" type="string" value="surface-molar_density_liquid" />
       <Parameter name="porosity key" type="string" value="surface-one" />
-      <Parameter name="component names" type="Array(string)" value="{C5H7O2N(aq), CH2O(aq), CO2(aq), N2(aq), NH4+, NO2-, NO3-, O2(aq)}" />
-      <Parameter name="number of liquid components" type="int" value="8" />
-      <Parameter name="component molar masses" type="Array(double)" value="{30.0158, 30.0158, 44.0098, 28.0135, 18.0385, 46.0055, 62.0049, 31.9988}" />
+      <Parameter name="component names" type="Array(string)" value="{H+, HCO3-, Ca++, Tracer1}" />
+      <Parameter name="number of liquid components" type="int" value="4" />
+      <Parameter name="component molar masses" type="Array(double)" value="{1.0}" />
       <Parameter name="spatial discretization order" type="int" value="1" />
       <Parameter name="temporal discretization order" type="int" value="1" />
       <Parameter name="cfl" type="double" value="1.0" />
       <Parameter name="water tolerance" type="double" value="0.001" />
       <Parameter name="transport subcycling" type="bool" value="false" />
-      <Parameter name="number of aqueous components" type="int" value="8" />
+      <Parameter name="number of aqueous components" type="int" value="4" />
       <Parameter name="number of gaseous components" type="int" value="0" />
       <Parameter name="runtime diagnostics: regions" type="Array(string)" value="{}" />
       <Parameter name="debug cells" type="Array(int)" value="{0}" />
@@ -470,8 +401,8 @@
       <ParameterList name="source terms">
         <ParameterList name="geochemical" type="ParameterList">
           <ParameterList name="Tracer injection" type="ParameterList">
-            <Parameter name="regions" type="Array(string)" value="{surface domain}" />
-            <Parameter name="solutes" type="Array(string)" value="{C5H7O2N(aq), CH2O(aq), CO2(aq), N2(aq), NH4+, NO2-, NO3-, O2(aq)}" />
+            <Parameter name="regions" type="Array(string)" value="{surface}" />
+            <Parameter name="solutes" type="Array(string)" value="{H+, HCO3-, Ca++, Tracer1}" />
             <Parameter name="times" type="Array(double)" value="{0.0,8640000.0}" />
             <Parameter name="geochemical conditions" type="Array(string)" value="{rain, rain}" />
             <Parameter name="time functions" type="Array(string)" value="{constant}" />
@@ -504,27 +435,25 @@
       <Parameter name="engine" type="string" value="PFloTran" />
       <Parameter name="chemistry model" type="string" value="Alquimia" />
       <Parameter name="domain name" type="string" value="domain" />
-      <Parameter name="engine input file" type="string" value="../data/cybernetic.in" />
-      <!-- <Parameter name="minerals" type="Array(string)" value="{Calcite}" /> -->
+      <Parameter name="engine input file" type="string" value="../data/1d-calcite-pflotran.in" />
+      <Parameter name="minerals" type="Array(string)" value="{Calcite}" />
       <Parameter name="activity model" type="string" value="unit" />
       <Parameter name="maximum Newton iterations" type="int" value="100" />
       <Parameter name="tolerance" type="double" value="1e-15" />
       <Parameter name="max time step (s)" type="double" value="2200000.0" />
-      <!-- <Parameter name="min time step (s)" type="double" value="10000000000.0" /> -->
-      <Parameter name="min time step (s)" type="double" value="1e-3" />
-      <Parameter name="initial time step (s)" type="double" value="10.0" />
+      <Parameter name="min time step (s)" type="double" value="10000000000.0" />
+      <Parameter name="initial time step (s)" type="double" value="2200000.0" />
       <Parameter name="time step cut threshold" type="int" value="5" />
       <Parameter name="time step cut factor" type="double" value="2.0" />
       <Parameter name="time step increase threshold" type="int" value="4" />
       <Parameter name="time step increase factor" type="double" value="1.2" />
       <Parameter name="time step control method" type="string" value="fixed" />
-      <!-- <Parameter name="auxiliary data" type="Array(string)" value="{pH}" /> -->
+      <Parameter name="auxiliary data" type="Array(string)" value="{pH}" />
       <Parameter name="initial conditions time" type="double" value="0.0" />
-      <Parameter name="number of component concentrations" type="int" value="8" />
+      <Parameter name="number of component concentrations" type="int" value="4" />
       <ParameterList name="initial condition" type="ParameterList">
         <ParameterList name="geochemical conditions" type="ParameterList">
-          <ParameterList name="initial_zero" type="ParameterList">
-          <!-- <ParameterList name="initial" type="ParameterList"> -->
+          <ParameterList name="initial" type="ParameterList">
             <Parameter name="regions" type="Array(string)" value="{computational domain}" />
           </ParameterList>
         </ParameterList>
@@ -542,28 +471,25 @@
       <Parameter name="chemistry model" type="string" value="Alquimia" />
       <Parameter name="domain name" type="string" value="surface" />
       <Parameter name="saturation liquid key" type="string" value="surface-ponded_depth" />
-      <Parameter name="engine input file" type="string" value="../data/cybernetic.in" />
-      <!-- <Parameter name="minerals" type="Array(string)" value="{Calcite}" /> -->
+      <Parameter name="engine input file" type="string" value="../data/1d-calcite-pflotran.in" />
+      <Parameter name="minerals" type="Array(string)" value="{Calcite}" />
       <Parameter name="activity model" type="string" value="unit" />
       <Parameter name="maximum Newton iterations" type="int" value="100" />
       <Parameter name="tolerance" type="double" value="1e-15" />
       <Parameter name="max time step (s)" type="double" value="22000000.0" />
-      <!-- <Parameter name="min time step (s)" type="double" value="10000000000.0" /> -->
-      <Parameter name="min time step (s)" type="double" value="1e-3" />
-      <!-- <Parameter name="initial time step (s)" type="double" value="22000000.0" /> -->
-      <Parameter name="initial time step (s)" type="double" value="10.0" />
+      <Parameter name="min time step (s)" type="double" value="10000000000.0" />
+      <Parameter name="initial time step (s)" type="double" value="22000000.0" />
       <Parameter name="time step cut threshold" type="int" value="5" />
       <Parameter name="time step cut factor" type="double" value="2.0" />
       <Parameter name="time step increase threshold" type="int" value="4" />
       <Parameter name="time step increase factor" type="double" value="1.2" />
       <Parameter name="time step control method" type="string" value="fixed" />
-      <!-- <Parameter name="auxiliary data" type="Array(string)" value="{pH}" /> -->
+      <Parameter name="auxiliary data" type="Array(string)" value="{pH}" />
       <Parameter name="initial conditions time" type="double" value="0.0" />
-      <Parameter name="number of component concentrations" type="int" value="8" />
+      <Parameter name="number of component concentrations" type="int" value="4" />
       <ParameterList name="initial condition" type="ParameterList">
         <ParameterList name="geochemical conditions" type="ParameterList">
-          <ParameterList name="initial_zero" type="ParameterList">
-          <!-- <ParameterList name="rain" type="ParameterList"> -->
+          <ParameterList name="surfini" type="ParameterList">
             <Parameter name="regions" type="Array(string)" value="{surface domain}" />
           </ParameterList>
         </ParameterList>
@@ -609,13 +535,10 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function">
               <ParameterList name="function-tabular">
-                <Parameter name="x values" type="Array(double)" value="{0.0,86400,432000,864000}" />
-                <Parameter name="y values" type="Array(double)" value="{0,  1e-09,     1e-9,     0}" />
-                <!-- <Parameter name="x values" type="Array(double)" value="{0.0,4320000,6480000,8640000,10800000,12960000 -->
-<!-- }" /> -->
-                <!-- <Parameter name="y values" type="Array(double)" value="{0e-07,1e-06,0e-07,2e-06,0e-7,1e-06}" /> -->
-                <!-- <Parameter name="forms" type="Array(string)" value="{constant,constant,constant,constant,constant}" /> -->
-                <Parameter name="forms" type="Array(string)" value="{constant,constant,constant}" />
+                <Parameter name="x values" type="Array(double)" value="{0.0,4320000,6480000,8640000,10800000,12960000
+}" />
+                <Parameter name="y values" type="Array(double)" value="{0e-07,1e-06,0e-07,2e-06,0e-7,1e-06}" />
+                <Parameter name="forms" type="Array(string)" value="{constant,constant,constant,constant,constant}" />
               </ParameterList>
             </ParameterList>
           </ParameterList>
@@ -699,7 +622,7 @@
         </ParameterList>
       </ParameterList>
 
-      <ParameterList name="saturation_liquid" type="ParameterList">
+<ParameterList name="saturation_liquid" type="ParameterList">
         <Parameter name="field evaluator type" type="string" value="WRM" />
         <Parameter name="minimum rel perm cutoff" type="double" value="0.0" />
         <Parameter name="use surface rel perm" type="bool" value="true" />
@@ -714,6 +637,21 @@
           </ParameterList>
         </ParameterList>
       </ParameterList>
+
+     <!-- <ParameterList name="water retention evaluator" type="ParameterList"> -->
+     <!--    <Parameter name="minimum rel perm cutoff" type="double" value=" 0" /> -->
+     <!--    <Parameter name="use surface rel perm" type="bool" value="true" /> -->
+     <!--    <ParameterList name="WRM parameters" type="ParameterList"> -->
+     <!--      <ParameterList name="rest domain" type="ParameterList"> -->
+     <!--        <Parameter name="region" type="string" value="computational domain" /> -->
+     <!--        <Parameter name="WRM Type" type="string" value="van Genuchten" /> -->
+     <!--        <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="0.00010224" /> -->
+     <!--        <Parameter name="van Genuchten n [-]" type="double" value="2.0" /> -->
+     <!--        <Parameter name="residual saturation [-]" type="double" value="0.2" /> -->
+     <!--        <Parameter name="smoothing interval width [saturation]" type="double" value="0.0" /> -->
+     <!--      </ParameterList> -->
+     <!--    </ParameterList> -->
+     <!--  </ParameterList> --> 
 
     </ParameterList>
     <ParameterList name="initial conditions">
@@ -838,78 +776,116 @@
     </ParameterList>
     <Parameter name="blacklist" type="Array(string)" value="{alquimia_aux.*, primary.*, secondary.*, ion_exchange_ref.*, pH*, mineral_reaction.*, mineral_saturation_index.*,mineral_rate_constant.*,total_component_quantity.*}" />
   </ParameterList>
-
   <ParameterList name="checkpoint">
-    <Parameter name="times start period stop" type="Array(double)" value="{0.0,2160000,-1.0}" />
+    <Parameter name="cycles" type="Array(int)" value="{0,7,10,13,16,19,22,25,28,31,34}" />
   </ParameterList>
-
   <ParameterList name="visualization" type="ParameterList">
     <Parameter name="visualize on 3D mesh" type="bool" value="true"/>
     <ParameterList name="domain" type="ParameterList">
-      <!-- <Parameter name="file name base" type="string" value="output-pflotran/plot_subs" /> -->
-      <Parameter name="times start period stop" type="Array(double)" value="{0.0,864000,-1.0}" />
-<!--
-      <Parameter name="cycles start period stop" type="Array(int)" value="{0,1,200}" />
--->
+      <Parameter name="file name base" type="string" value="ats_vis"/>
+      <Parameter name="times start period stop" type="Array(double)" value="{0,1,-1}"/>
+      <Parameter name="times start period stop units" type="string" value="d"/>
+      <Parameter name="time units" type="string" value="d"/>
     </ParameterList>
     <ParameterList name="surface" type="ParameterList">
-      <!-- <Parameter name="file name base" type="string" value="output-pflotran/plot_surf" /> -->
-      <Parameter name="times start period stop" type="Array(double)" value="{0.0,864000,-1.0}" />
-<!--
-      <Parameter name="cycles start period stop" type="Array(int)" value="{0,1,200}" />
--->
+      <Parameter name="file name base" type="string" value="ats_vis"/>
+      <Parameter name="times start period stop" type="Array(double)" value="{0,1,-1}"/>
+      <Parameter name="times start period stop units" type="string" value="d"/>
+      <Parameter name="time units" type="string" value="d"/>
     </ParameterList>
   </ParameterList>
 
+<!-- <ParameterList name="observations" type="ParameterList"> -->
 
-  <ParameterList name="observations" type="ParameterList">
-    <ParameterList name="surface outlet flux" type="ParameterList">
-      <Parameter name="variable" type="string" value="surface-water_flux" />
-      <Parameter name="direction normalized flux" type="bool" value="true" />
-      <Parameter name="region" type="string" value="surface boundary" />
-      <Parameter name="functional" type="string" value="extensive integral" />
-      <Parameter name="delimiter" type="string" value=" " />
-      <Parameter name="location name" type="string" value="face" />
-      <Parameter name="write interval" type="int" value="30" />
-      <Parameter name="observation output filename" type="string" value="surface_outlet_flux_pflotran.dat" />
-      <Parameter name="times start period stop" type="Array(double)" value="{0.0,3600.0,-1.0}" />
-    </ParameterList>
+<!--     <ParameterList name="surface total concentration" type="ParameterList"> -->
+<!--       <Parameter name="variable" type="string" value="surface-total_component_concentration"/> -->
+<!--       <Parameter name="region" type="string" value="surface domain"/> -->
+<!--       <Parameter name="functional" type="string" value="average"/> -->
+<!--       <Parameter name="delimiter" type="string" value=","/> -->
+<!--       <Parameter name="location name" type="string" value="cell"/> -->
+<!--       <Parameter name="write interval" type="int" value="10"/> -->
+<!--       <Parameter name="number of vectors" type="int" value="3"/> -->
+<!--       <Parameter name="observation output filename" type="string" value="surface_total_concentration.dat"/> -->
+<!--       <Parameter name="times start period stop" type="Array(double)" value="{ 0, 1,-1}" /> -->
+<!--       <Parameter name="times start period stop units" type="string" value="d" /> -->
+<!--     </ParameterList> -->
 
-    <ParameterList name="surface total concentration" type="ParameterList">
-      <Parameter name="variable" type="string" value="surface-total_component_concentration" />
-      <Parameter name="region" type="string" value="east conc" />
-      <Parameter name="functional" type="string" value="average" />
-      <Parameter name="delimiter" type="string" value=" " />
-      <Parameter name="location name" type="string" value="cell" />
-      <Parameter name="write interval" type="int" value="1" />
-      <Parameter name="number of vectors" type="int" value="8" />
-      <Parameter name="observation output filename" type="string" value="surface_total_concentration_pflotran.dat" />
-      <Parameter name="times start period stop" type="Array(double)" value="{0.0,3600.0,-1.0}" />
-    </ParameterList>
+<!--     <ParameterList name="surface free concentration" type="ParameterList"> -->
+<!--       <Parameter name="variable" type="string" value="surface-free_ion_species" /> -->
+<!--       <Parameter name="region" type="string" value="surface domain" /> -->
+<!--       <Parameter name="functional" type="string" value="average" /> -->
+<!--       <Parameter name="delimiter" type="string" value=" " /> -->
+<!--       <Parameter name="location name" type="string" value="cell" /> -->
+<!--       <Parameter name="write interval" type="int" value="10" /> -->
+<!--       <Parameter name="number of vectors" type="int" value="3" /> -->
+<!--       <Parameter name="observation output filename" type="string" value="surface_free_ion_species.dat" /> -->
+<!--       <Parameter name="times start period stop" type="Array(double)" value="{ 0, 1,-1}" /> -->
+<!--       <Parameter name="times start period stop units" type="string" value="d" /> -->
+<!--     </ParameterList> -->
 
-    <!-- <ParameterList name="surface free concentration" type="ParameterList"> -->
-    <!--   <Parameter name="variable" type="string" value="surface-free_ion_species" /> -->
-    <!--   <Parameter name="region" type="string" value="east conc" /> -->
-    <!--   <Parameter name="functional" type="string" value="average" /> -->
-    <!--   <Parameter name="delimiter" type="string" value=" " /> -->
-    <!--   <Parameter name="location name" type="string" value="cell" /> -->
-    <!--   <Parameter name="write interval" type="int" value="1" /> -->
-    <!--   <Parameter name="number of vectors" type="int" value="8" /> -->
-    <!--   <Parameter name="observation output filename" type="string" value="surface_free_ion_species_pflotran.dat" /> -->
-    <!--   <Parameter name="times start period stop" type="Array(double)" value="{0.0,86400.0,-1.0}" /> -->
-    <!-- </ParameterList> -->
-
-    <ParameterList name="surface-precipitation" type="ParameterList">
-      <Parameter name="variable" type="string" value="surface-water_source" />
-      <Parameter name="region" type="string" value="surface domain" />
-      <Parameter name="functional" type="string" value="average" />
-      <Parameter name="delimiter" type="string" value=" " />
-      <Parameter name="location name" type="string" value="cell" />
-      <Parameter name="write interval" type="int" value="30" />
-      <Parameter name="observation output filename" type="string" value="surface-water_source.dat" />
-      <Parameter name="times start period stop" type="Array(double)" value="{0.0,3600.0,-1.0}" />
-    </ParameterList>
-
-  </ParameterList>
+<!--     <ParameterList name="fluxes" type="ParameterList"> -->
+<!--       <Parameter name="observation output filename" type="string" value="water_balance-daily.dat" /> -->
+<!--       <Parameter name="write interval" type="int" value="10" /> -->
+<!--       <Parameter name="delimiter" type="string" value="," /> -->
+<!--       <Parameter name="time units" type="string" value="d" /> -->
+<!--       <Parameter name="times start period stop" type="Array(double)" value="{ 0, 1,-1}" /> -->
+<!--       <Parameter name="times start period stop units" type="string" value="d" /> -->
+<!--       <ParameterList name="observed quantities" type="ParameterList"> -->
+<!--         <ParameterList name="watershed boundary discharge [mol d^-1]" type="ParameterList"> -->
+<!--           <Parameter name="variable" type="string" value="surface-water_flux" /> -->
+<!--           <Parameter name="direction normalized flux" type="bool" value="true" /> -->
+<!--           <Parameter name="region" type="string" value="surface domain boundary" /> -->
+<!--           <Parameter name="functional" type="string" value="extensive integral" /> -->
+<!--           <Parameter name="location name" type="string" value="face" /> -->
+<!--           <Parameter name="time integrated" type="bool" value="true" /> -->
+<!--         </ParameterList> -->
+<!--         <ParameterList name="net groundwater flux [mol d^-1]" type="ParameterList"> -->
+<!--           <Parameter name="variable" type="string" value="water_flux" /> -->
+<!--           <Parameter name="region" type="string" value="computational domain boundary" /> -->
+<!--           <Parameter name="location name" type="string" value="face" /> -->
+<!--           <Parameter name="functional" type="string" value="extensive integral" /> -->
+<!--           <Parameter name="direction normalized flux" type="bool" value="true" /> -->
+<!--           <Parameter name="time integrated" type="bool" value="true" /> -->
+<!--         </ParameterList> -->
+<!--     <ParameterList name="surface precipitation [m d^-1]" type="ParameterList"> -->
+<!--       <Parameter name="variable" type="string" value="surface-water_source" /> -->
+<!--       <Parameter name="region" type="string" value="surface domain" /> -->
+<!--       <Parameter name="functional" type="string" value="average" /> -->
+<!--       <Parameter name="location name" type="string" value="cell" /> -->
+<!--       <Parameter name="time integrated" type="bool" value="true" /> -->
+<!--     </ParameterList> -->
+        
+<!--         <ParameterList name="surface water content [mol]" type="ParameterList"> -->
+<!--           <Parameter name="variable" type="string" value="surface-water_content" /> -->
+<!--           <Parameter name="region" type="string" value="surface domain" /> -->
+<!--           <Parameter name="functional" type="string" value="extensive integral" /> -->
+<!--           <Parameter name="location name" type="string" value="cell" /> -->
+<!--         </ParameterList> -->
+<!--         <ParameterList name="subsurface water content [mol]" type="ParameterList"> -->
+<!--           <Parameter name="variable" type="string" value="water_content" /> -->
+<!--           <Parameter name="region" type="string" value="computational domain" /> -->
+<!--           <Parameter name="functional" type="string" value="extensive integral" /> -->
+<!--           <Parameter name="location name" type="string" value="cell" /> -->
+<!--         </ParameterList> -->
+        
+<!--         <ParameterList name="max ponded depth [m]" type="ParameterList"> -->
+<!--           <Parameter name="variable" type="string" value="surface-ponded_depth"/> -->
+<!--           <Parameter name="region" type="string" value="surface domain"/> -->
+<!--           <Parameter name="functional" type="string" value="maximum"/> -->
+<!--           <Parameter name="location name" type="string" value="cell"/> -->
+<!--           <Parameter name="time integrated" type="bool" value="false"/> -->
+<!--         </ParameterList> -->
+        
+<!--         <ParameterList name="infiltration [mol d^-1]" type="ParameterList"> -->
+<!--           <Parameter name="variable" type="string" value="surface-surface_subsurface_flux" /> -->
+<!--           <Parameter name="region" type="string" value="surface domain" /> -->
+<!--           <Parameter name="location name" type="string" value="cell" /> -->
+<!--           <Parameter name="functional" type="string" value="average" /> -->
+<!--           <Parameter name="time integrated" type="bool" value="true" /> -->
+<!--         </ParameterList> -->
+<!--       </ParameterList> -->
+<!--     </ParameterList> -->
+<!--   </ParameterList> -->
+  
 
 </ParameterList>

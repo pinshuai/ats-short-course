@@ -32,6 +32,7 @@ CHEMISTRY
       Ka3 0.001 mM 
       Kd3 0.25 mM 
       Kdeg 0.242 1/d 
+      INHIBIT_BY_NH4
       # STORE_CONSUMPTION_PRODUCTION
       # CARBON_CONSUMPTION_SPECIES C_consumption 
     /
@@ -54,6 +55,7 @@ END
       CH2O(aq) 4.16e-05 T 
       CO2(aq) 0.00248 T 
       N2(aq) 1e-10 T 
+      # NH4+ 1e-10 T 
       NH4+ 1e-10 T 
       NO2- 1e-10 T 
       NO3- 0.000396 T 
@@ -71,6 +73,7 @@ END
       CH2O(aq) 4.16e-05 T 
       CO2(aq) 0.00248 T 
       N2(aq) 1e-10 T 
+      # NH4+ 1e-10 T 
       NH4+ 1e-10 T 
       NO2- 1e-10 T 
       NO3- 0.000396 T 
@@ -88,6 +91,7 @@ END
       CH2O(aq) 0.000258 T 
       CO2(aq) 0.00112 T 
       N2(aq) 1e-10 T 
+      # NH4+ 1e-10 T 
       NH4+ 1e-10 T 
       NO2- 1e-10 T 
       NO3- 8.87e-06 T 

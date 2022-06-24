@@ -117,7 +117,7 @@
     <Parameter name="start time" type="double" value="0.0" />
     <Parameter name="end time" type="double" value="10.0" />
     <Parameter name="end time units" type="string" value="d" />
-    <Parameter name="end cycle" type="int" value="100" />
+    <!-- <Parameter name="end cycle" type="int" value="100" /> -->
 <!--
     <Parameter name="restart from checkpoint file" type="string" value="./restart/checkpoint00051.h5" />	    
 -->
@@ -523,8 +523,7 @@
       <Parameter name="number of component concentrations" type="int" value="8" />
       <ParameterList name="initial condition" type="ParameterList">
         <ParameterList name="geochemical conditions" type="ParameterList">
-          <ParameterList name="initial_zero" type="ParameterList">
-          <!-- <ParameterList name="initial" type="ParameterList"> -->
+          <ParameterList name="initial" type="ParameterList">
             <Parameter name="regions" type="Array(string)" value="{computational domain}" />
           </ParameterList>
         </ParameterList>
@@ -562,8 +561,7 @@
       <Parameter name="number of component concentrations" type="int" value="8" />
       <ParameterList name="initial condition" type="ParameterList">
         <ParameterList name="geochemical conditions" type="ParameterList">
-          <ParameterList name="initial_zero" type="ParameterList">
-          <!-- <ParameterList name="rain" type="ParameterList"> -->
+          <ParameterList name="rain" type="ParameterList">
             <Parameter name="regions" type="Array(string)" value="{surface domain}" />
           </ParameterList>
         </ParameterList>
@@ -609,13 +607,10 @@
             <Parameter name="component" type="string" value="cell" />
             <ParameterList name="function">
               <ParameterList name="function-tabular">
-                <Parameter name="x values" type="Array(double)" value="{0.0,86400,432000,864000}" />
-                <Parameter name="y values" type="Array(double)" value="{0,  1e-09,     1e-9,     0}" />
-                <!-- <Parameter name="x values" type="Array(double)" value="{0.0,4320000,6480000,8640000,10800000,12960000 -->
-<!-- }" /> -->
-                <!-- <Parameter name="y values" type="Array(double)" value="{0e-07,1e-06,0e-07,2e-06,0e-7,1e-06}" /> -->
-                <!-- <Parameter name="forms" type="Array(string)" value="{constant,constant,constant,constant,constant}" /> -->
-                <Parameter name="forms" type="Array(string)" value="{constant,constant,constant}" />
+                <Parameter name="x values" type="Array(double)" value="{0.0,4320000,6480000,8640000,10800000,12960000
+}" />
+                <Parameter name="y values" type="Array(double)" value="{0e-07,1e-06,0e-07,2e-06,0e-7,1e-06}" />
+                <Parameter name="forms" type="Array(string)" value="{constant,constant,constant,constant,constant}" />
               </ParameterList>
             </ParameterList>
           </ParameterList>

@@ -46,19 +46,19 @@
         <Parameter name="normal" type="Array(double)" value="{0.0,0.0,1.0}" />
       </ParameterList>
     </ParameterList>
-    <ParameterList name="east face seepage" type="ParameterList">
-      <ParameterList name="region: box" type="ParameterList">
-        <Parameter name="low coordinate" type="Array(double)" value="{0.0,0.0,8.0}" />
-        <Parameter name="high coordinate" type="Array(double)" value="{1.0,0.0,8.1}" />
-      </ParameterList>
-    </ParameterList>
+    <!-- <ParameterList name="east face seepage" type="ParameterList"> -->
+    <!--   <ParameterList name="region: box" type="ParameterList"> -->
+    <!--     <Parameter name="low coordinate" type="Array(double)" value="{0.0,0.0,8.0}" /> -->
+    <!--     <Parameter name="high coordinate" type="Array(double)" value="{1.0,0.0,8.1}" /> -->
+    <!--   </ParameterList> -->
+    <!-- </ParameterList> -->
   </ParameterList>
 
 
 
   <ParameterList name="cycle driver">
     <Parameter name="start time" type="double" value="0.0" />
-    <Parameter name="end time" type="double" value="150.0" />
+    <Parameter name="end time" type="double" value="10.0" />
     <Parameter name="end time units" type="string" value="d" />
 <!--
     <Parameter name="restart from checkpoint file" type="string" value="./restart/checkpoint00051.h5" />	    

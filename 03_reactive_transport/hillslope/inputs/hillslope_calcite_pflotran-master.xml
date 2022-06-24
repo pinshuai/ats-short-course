@@ -115,12 +115,16 @@
 
   <ParameterList name="cycle driver">
     <Parameter name="start time" type="double" value="0.0" />
-    <Parameter name="end time" type="double" value="175.0" />
+    <Parameter name="end time" type="double" value="10.0" />
     <Parameter name="end time units" type="string" value="d" />
-    <Parameter name="end cycle" type="int" value="100" />
+    <!-- <Parameter name="end cycle" type="int" value="100" /> -->
 <!--
     <Parameter name="restart from checkpoint file" type="string" value="./restart/checkpoint00051.h5" />	    
 -->
+    <ParameterList name="required times">
+	  <Parameter name="times start period stop" type="Array(double)" value="{ 0, 1,-1 }" />
+	<Parameter name="times start period stop units" type="string" value="d" />
+    </ParameterList>
 
     <ParameterList name="PK tree">
       <ParameterList name="flow and transport">
